@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For My Valentine 💖</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    font-family: Arial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card {
+    background: rgba(255,255,255,0.9);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    width: 320px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+img {
+    width: 120px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#yes {
+    background: #ff4d6d;
+    color: white;
+}
+
+#no {
+    background: black;
+    color: white;
+    position: absolute;
+}
+
+#message {
+    display: none;
+    margin-top: 20px;
+    color: #d63384;
+    font-weight: bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+    <img src="yourimage.jpg" id="photo">
+    <h2>Hey My Love 💖</h2>
+
+    <p>Every smile of yours feels like home.<br>
+       Will you be my Valentine?</p>
+
+    <button id="yes" onclick="accepted()">Yes ❤️</button>
+    <button id="no">No 💔</button>
+
+    <div id="message">
+        Yayyy! 💞 <br>
+        You just made me the happiest husband in the world!  
+        Happy First Valentine’s Day to us! 😘
+    </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("no");
+
+noBtn.addEventListener("mouseover", function() {
+    let x = Math.random() * (window.innerWidth - 100);
+    let y = Math.random() * (window.innerHeight - 50);
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+});
+
+function accepted() {
+    document.getElementById("message").style.display = "block";
+}
+</script>
+
+</body>
+</html>
