@@ -67,21 +67,24 @@ button {
     <img src="yourimage.jpg" id="photo">
     <h2>Hey My Love 💖</h2>
 
-    <p>Every smile of yours feels like home.<br>
-       Will you be my Valentine?</p>
+<p id="question">Every smile of yours feels like home.<br>
+   Will you be my Valentine?</p>
 
-    <button id="yes" onclick="accepted()">Yes ❤️</button>
-    <button id="no">No 💔</button>
+<button id="yes" onclick="accepted()">Yes ❤️</button>
+<button id="no">No 💔</button>
 
-    <div id="message">
-        Yayyy! 💞 <br>
-        You just made me the happiest husband in the world!  
-        Happy First Valentine’s Day to us! 😘
-    </div>
+<div id="message">
+    Yayyy! 💞 <br>
+    You just made me the happiest husband in the world!  
+    Happy First Valentine’s Day to us! 😘
+</div>
 </div>
 
 <script>
 const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+const messageDiv = document.getElementById("message");
+const questionText = document.getElementById("question");
 
 noBtn.addEventListener("mouseover", function() {
     let x = Math.random() * (window.innerWidth - 100);
@@ -92,10 +95,29 @@ noBtn.addEventListener("mouseover", function() {
 });
 
 function accepted() {
-    document.getElementById("message").style.display = "block";
+    // Hide buttons
+    yesBtn.style.display = "none";
+    noBtn.style.display = "none";
+
+    // Hide old question
+    questionText.style.display = "none";
+
+    // Show new romantic message
+    messageDiv.innerHTML = `
+        💖 Yayyyyy! You Said YES! 💖 <br><br>
+        I knew it… you can never say no to me 😉 <br><br>
+        Thank you for being my best friend,  
+        my happiness, and my forever Valentine 💞<br><br>
+        This is just our first Valentine together,  
+        and I promise to make every next one even more special!<br><br>
+        I love you more than all the code in the world 😄❤️
+    `;
+
+    messageDiv.style.display = "block";
 }
 </script>
 
 </body>
 </html>
+
 
