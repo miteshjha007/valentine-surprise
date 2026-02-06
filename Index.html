@@ -31,7 +31,30 @@ img {
     margin-bottom: 10px;
     border: 4px solid #ff4d6d;
 }
+#message {
+    display: none;
+    margin-top: 20px;
+    color: #d63384;
+    font-weight: bold;
+    animation: fadeIn 1.5s ease-in-out;
+}
 
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.heart {
+    position: absolute;
+    color: red;
+    font-size: 20px;
+    animation: float 4s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-500px); opacity: 0; }
+}
 button {
     padding: 10px 20px;
     margin: 10px;
@@ -65,19 +88,17 @@ button {
 
 <div class="card">
     <img src="yourimage.jpg" id="photo">
-    <h2>Hey My Love 💖</h2>
+    <h2>Hey Nicku 💖</h2>
 
-<p id="question">Every smile of yours feels like home.<br>
-   Will you be my Valentine?</p>
+    <p id="question">
+       Every smile of yours feels like home.<br>
+       Will you be my Valentine, Nicky?
+    </p>
 
-<button id="yes" onclick="accepted()">Yes ❤️</button>
-<button id="no">No 💔</button>
+    <button id="yes" onclick="accepted()">Yes ❤️</button>
+    <button id="no">No 💔</button>
 
-<div id="message">
-    Yayyy! 💞 <br>
-    You just made me the happiest husband in the world!  
-    Happy First Valentine’s Day to us! 😘
-</div>
+    <div id="message"></div>
 </div>
 
 <script>
@@ -87,37 +108,60 @@ const messageDiv = document.getElementById("message");
 const questionText = document.getElementById("question");
 
 noBtn.addEventListener("mouseover", function() {
-    let x = Math.random() * (window.innerWidth - 100);
-    let y = Math.random() * (window.innerHeight - 50);
+    let x = Math.random() * (window.innerWidth - 120);
+    let y = Math.random() * (window.innerHeight - 60);
 
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
 });
 
+function createHearts() {
+    for(let i = 0; i < 20; i++) {
+        let heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = Math.random() * 100 + "vh";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 4000);
+    }
+}
+
 function accepted() {
-    // Hide buttons
     yesBtn.style.display = "none";
     noBtn.style.display = "none";
-
-    // Hide old question
     questionText.style.display = "none";
 
-    // Show new romantic message
     messageDiv.innerHTML = `
-        💖 Yayyyyy! You Said YES! 💖 <br><br>
-        I knew it… you can never say no to me 😉 <br><br>
-        Thank you for being my best friend,  
-        my happiness, and my forever Valentine 💞<br><br>
-        This is just our first Valentine together,  
-        and I promise to make every next one even more special!<br><br>
+        💖 Yaaaaay! My Nicku Said YES! 💖 <br><br>
+
+        I knew it, Nicky… you can never say no to me 😉<br><br>
+
+        You are not just my wife,<br>
+        You are my happiness, my peace,<br>
+        my best friend, and my forever Valentine 💞<br><br>
+
+        Thank you for filling my life with love,<br>
+        laughter, and countless beautiful moments.<br><br>
+
+        This is our first Valentine together,<br>
+        and I promise you, Nicku,<br>
+        every next one will be even more magical ✨<br><br>
+
         I love you more than all the code in the world 😄❤️
     `;
 
     messageDiv.style.display = "block";
+
+    createHearts();
+    setInterval(createHearts, 3000);
 }
 </script>
-
 </body>
 </html>
+
 
 
